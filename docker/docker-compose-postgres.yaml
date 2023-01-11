@@ -19,6 +19,7 @@ services:
       retries: 12
     links:
       - elasticsearch:es
+      - postgres:potsgres
     depends_on:
       elasticsearch:
         condition: service_healthy

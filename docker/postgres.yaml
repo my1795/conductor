@@ -1,0 +1,32 @@
+version: '2.3'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=conductor
+      - POSTGRES_PASSWORD=conductor
+    volumes:
+      - pgdata-conductor:/var/lib/postgresql/data
+    networks:
+      - internal
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: timeout 5 bash -c 'cat < /dev/null > /dev/tcp/localhost/5432'
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
+volumes:
+  pgdata-conductor:
+    driver: local
+  esdata-conductor:
+    driver: local
+
+networks:
+  internal:
