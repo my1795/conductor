@@ -118,10 +118,10 @@
             "locked": "2.5.13"
         },
         "org.elasticsearch.client:elasticsearch-rest-client": {
-            "locked": "7.17.8"
+            "locked": "7.15.2"
         },
         "org.elasticsearch.client:elasticsearch-rest-high-level-client": {
-            "locked": "7.17.8"
+            "locked": "7.15.2"
         },
         "org.glassfish.jersey.core:jersey-common": {
             "locked": "2.22.2"
@@ -380,6 +380,12 @@
         "com.netflix.conductor:conductor-server": {
             "project": true
         },
+        "com.netflix.conductor:conductor-workflow-event-listener": {
+            "firstLevelTransitive": [
+                "com.netflix.conductor:conductor-server"
+            ],
+            "locked": "3.13.2"
+        },
         "com.netflix.dyno-queues:dyno-queues-redis": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-redis-persistence"
@@ -636,10 +642,10 @@
             "locked": "2.5.13"
         },
         "org.elasticsearch.client:elasticsearch-rest-client": {
-            "locked": "7.17.8"
+            "locked": "7.15.2"
         },
         "org.elasticsearch.client:elasticsearch-rest-high-level-client": {
-            "locked": "7.17.8"
+            "locked": "7.15.2"
         },
         "org.glassfish.jaxb:jaxb-runtime": {
             "firstLevelTransitive": [

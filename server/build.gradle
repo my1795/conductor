@@ -45,6 +45,8 @@ dependencies {
     runtimeOnly group: 'com.netflix.conductor', name: 'conductor-common-persistence', version: '3.13.2'
     runtimeOnly group: 'com.netflix.conductor', name: 'conductor-postgres-persistence', version: '3.13.2'
     runtimeOnly group: 'com.netflix.conductor', name: 'conductor-es7-persistence', version: '3.13.2'
+    // https://mvnrepository.com/artifact/com.netflix.conductor/conductor-workflow-event-listener
+    runtimeOnly group: 'com.netflix.conductor', name: 'conductor-workflow-event-listener', version: '3.13.2'
     testImplementation project(':conductor-rest')
     testImplementation project(':conductor-common')
     testImplementation "io.grpc:grpc-testing:${revGrpc}"

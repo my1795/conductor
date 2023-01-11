@@ -229,6 +229,9 @@
         "com.netflix.conductor:conductor-rest": {
             "project": true
         },
+        "com.netflix.conductor:conductor-workflow-event-listener": {
+            "locked": "3.13.2"
+        },
         "com.netflix.dyno-queues:dyno-queues-redis": {
             "firstLevelTransitive": [
                 "com.netflix.conductor:conductor-redis-persistence"
@@ -644,6 +647,9 @@
         },
         "com.netflix.conductor:conductor-rest": {
             "project": true
+        },
+        "com.netflix.conductor:conductor-workflow-event-listener": {
+            "locked": "3.13.2"
         },
         "com.netflix.dyno-queues:dyno-queues-redis": {
             "firstLevelTransitive": [
@@ -1155,6 +1161,9 @@
         },
         "com.netflix.conductor:conductor-rest": {
             "project": true
+        },
+        "com.netflix.conductor:conductor-workflow-event-listener": {
+            "locked": "3.13.2"
         },
         "com.netflix.dyno-queues:dyno-queues-redis": {
             "firstLevelTransitive": [
