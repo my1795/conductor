@@ -4,14 +4,32 @@ services:
   conductor-server:
     environment:
       - CONFIG_PROP=config-postgres.properties
+    image: conductor:server
+    build:
+      context: ../
+      dockerfile: docker/server/Dockerfile
+    networks:
+      - internal
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl","-I" ,"-XGET", "http://localhost:8080/health"]
+      interval: 60s
+      timeout: 30s
+      retries: 12
     links:
-      - postgres:postgresdb
+      - elasticsearch:es
     depends_on:
-      postgres:
+      elasticsearch:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
 
   postgres:
-    image: postgres
+    image: postgres:15
     environment:
       - POSTGRES_USER=conductor
       - POSTGRES_PASSWORD=conductor
@@ -32,8 +50,34 @@ services:
         max-size: "1k"
         max-file: "3"
 
+  elasticsearch:
+    image: elasticsearch:7.17.8
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx1024m"
+      - transport.host=0.0.0.0
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    volumes:
+      - esdata-conductor:/usr/share/elasticsearch/data
+    networks:
+      - internal
+    ports:
+      - 9200:9200
+      - 9300:9300
+    healthcheck:
+      test: timeout 5 bash -c 'cat < /dev/null > /dev/tcp/localhost/9300'
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
 volumes:
   pgdata-conductor:
+    driver: local
+  esdata-conductor:
     driver: local
 
 networks:
