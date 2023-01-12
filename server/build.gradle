@@ -23,6 +23,7 @@ dependencies {
     implementation project(':conductor-cassandra-persistence')
     implementation project(':conductor-grpc-server')
     implementation project(':conductor-redis-lock')
+    implementation project(':conductor-es6-persistence')
     implementation project(':conductor-redis-concurrency-limit')
     implementation project(':conductor-http-task')
     implementation project(':conductor-json-jq-task')
@@ -44,8 +45,6 @@ dependencies {
     runtimeOnly "org.glassfish.jaxb:jaxb-runtime:${revJAXB}"
     runtimeOnly group: 'com.netflix.conductor', name: 'conductor-common-persistence', version: '3.13.2'
     runtimeOnly group: 'com.netflix.conductor', name: 'conductor-postgres-persistence', version: '3.13.2'
-    runtimeOnly group: 'com.netflix.conductor', name: 'conductor-es7-persistence', version: '3.13.2'
-    // https://mvnrepository.com/artifact/com.netflix.conductor/conductor-workflow-event-listener
     runtimeOnly group: 'com.netflix.conductor', name: 'conductor-workflow-event-listener', version: '3.13.2'
     testImplementation project(':conductor-rest')
     testImplementation project(':conductor-common')
