@@ -1,4 +1,4 @@
-version: '2.3'
+version: '3.8'
 
 services:
   conductor-server:
@@ -31,10 +31,7 @@ services:
   conductor-ui:
     environment:
       - WF_SERVER=http://conductor-server:8080
-    image: conductor:ui
-    build:
-      context: ../
-      dockerfile: docker/ui/Dockerfile
+    image: mustafasdocker1/conductor-ui:v3.13.2
     networks:
       - internal
     ports:
@@ -66,7 +63,7 @@ services:
         max-file: "3"
 
   elasticsearch:
-    image: elasticsearch:7.17.8
+    image: elasticsearch:6.8.15
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx1024m"
       - transport.host=0.0.0.0
