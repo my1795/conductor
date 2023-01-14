@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.9'
 
 services:
   conductor-server:
@@ -19,9 +19,10 @@ services:
       retries: 12
     links:
       - elasticsearch:es
-      - postgres:potsgres
+      - postgres:postgresdb
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
     logging:
       driver: "json-file"
       options:
