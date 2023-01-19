@@ -5,7 +5,7 @@
 # ===========================================================================================================
 # 0. Builder stage
 # ===========================================================================================================
-FROM eclipse-temurin:11-jdk-focal AS builder
+FROM eclipse-temurin:11-jdk AS builder
 
 LABEL maintainer="Netflix OSS <conductor@netflix.com>"
 
