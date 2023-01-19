@@ -16,7 +16,7 @@ WORKDIR /usr/src/app
 COPY ./ui/package.json ./
  
 # Installs all node packages. Cached unless package.json changes
-RUN yarn install
+RUN yarn install --network-timeout 50000
  
 # Copies everything else over to Docker environment
 # node_modules excluded in .dockerignore. 
